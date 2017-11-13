@@ -102,7 +102,7 @@
     [self.backGroudView addSubview:self.accessoryProgress];
     [self.backGroudView addSubview:self.startBtn];
     
-    //判断网络自动xia'z
+    //判断网络自动是否自动下载
 //    AFNetworkReachabilityManager *reachability = [AFNetworkReachabilityManager sharedManager];
 //    [reachability startMonitoring];
 //    [reachability setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -253,9 +253,8 @@ didFinishDownloadingToURL:(NSURL *)location{
     
     if (!self.downloadTask) {
         [self startDownload];
-//        [sender setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
-        [sender setTitle:@"取消下载" forState:UIControlStateNormal];
-        sender.frame = CGRectMake(self.accessoryProgress.frame.origin.x +self.accessoryProgress.frame.size.width +10, self.accessoryProgress.frame.origin.y - 12, 24, 24);
+        [sender setTitle:@"×" forState:UIControlStateNormal];
+        sender.frame = CGRectMake(self.accessoryProgress.frame.origin.x + self.accessoryProgress.frame.size.width +10, self.accessoryProgress.frame.origin.y - 12, 24, 24);
         sender.backgroundColor = [UIColor clearColor];
 
     }else{
@@ -268,7 +267,6 @@ didFinishDownloadingToURL:(NSURL *)location{
         self.startBtn.bounds = CGRectMake(0, 0, 80, 25);
         self.accessoryProgress.hidden = YES;
         self.accessorySize.text = self.info[@"fileSize"];
-//        sender.backgroundColor = [UIColor ];
     }
     
 }
